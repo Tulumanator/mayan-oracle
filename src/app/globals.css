@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0e0a1a;
+  --surface: #1a1330;
+  --surface2: #241c40;
+  --border: #3d2f6e;
+  --gold: #c9a227;
+  --gold-light: #e8c84a;
+  --text: #f0e8d0;
+  --text-muted: #9e8fc0;
+  --accent: #7c3aed;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  min-height: 100vh;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

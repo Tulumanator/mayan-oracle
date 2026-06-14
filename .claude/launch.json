@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mayan-oracle",
+      "runtimeExecutable": "/Users/richardrygg/.local/arm64node/node-v20.20.2-darwin-arm64/bin/node",
+      "runtimeArgs": ["node_modules/.bin/next", "dev"],
+      "port": 3000
+    }
+  ]
+}
