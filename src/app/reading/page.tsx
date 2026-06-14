@@ -122,7 +122,8 @@ function ReadingContent() {
 
   const share = () => {
     if (!data) return;
-    const url = `${window.location.origin}/share/${data.shareId}`;
+    const encoded = btoa(unescape(encodeURIComponent(data.reading)));
+    const url = `${window.location.origin}/share/${data.shareId}?r=${encoded}`;
     navigator.clipboard.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); });
   };
 

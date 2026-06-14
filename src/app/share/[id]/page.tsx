@@ -4,10 +4,13 @@ import Link from "next/link";
 
 interface Props {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ r?: string }>;
 }
 
-export default async function SharePage({ params }: Props) {
+export default async function SharePage({ params, searchParams }: Props) {
   const { id } = await params;
+  const { r } = await searchParams;
+  const reading = r ? decodeURIComponent(escape(atob(r))) : null;
   const cardIds = id.split("-").filter(Boolean);
 
   const allCards = [...TULUM_CARDS, ...MAYAN_CARDS];
@@ -77,6 +80,32 @@ export default async function SharePage({ params }: Props) {
                 <p style={{ fontSize: "11px", color: "#c49040", letterSpacing: "0.06em" }}>{card.name}</p>
                 <p style={{ fontSize: "10px", color: "#6e6e6e" }}>{card.subtitle}</p>
               </div>
+            ))}
+          </div>
+        )}
+
+        {/* Reading text */}
+        {reading && (
+          <div style={{
+            background: "#141416",
+            border: "1px solid #252528",
+            borderRadius: "16px",
+            padding: "clamp(24px, 5vw, 40px)",
+            marginBottom: "32px",
+            textAlign: "left",
+          }}>
+            <p style={{ color: "#c49040", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "24px", textAlign: "center" }}>
+              Their Reading
+            </p>
+            {reading.split("\n\n").filter(Boolean).map((para, i) => (
+              <p key={i} style={{
+                color: "rgba(240,235,224,0.85)",
+                fontSize: "clamp(16px, 2vw, 19px)",
+                lineHeight: 1.85,
+                marginBottom: "20px",
+              }}>
+                {para}
+              </p>
             ))}
           </div>
         )}
